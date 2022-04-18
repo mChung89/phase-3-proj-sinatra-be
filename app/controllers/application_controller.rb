@@ -7,11 +7,15 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/listings/:id" do 
-    Listing.find(params[:climate_type]).to_json
+    Listing.find(params[:id]).to_json
   end
 
   get "/users" do 
     User.all.to_json
+  end
+
+  get "/listings/climate/:climate_type" do 
+    Listing.where(climate_type: params[:climate_type]).to_json
   end
 
 end
