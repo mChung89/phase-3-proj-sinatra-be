@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_182512) do
+ActiveRecord::Schema.define(version: 2022_04_19_165756) do
 
   create_table "listings", force: :cascade do |t|
     t.string "location"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 2022_04_18_182512) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.string "thumbnail"
+    t.integer "owner_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "reviews", force: :cascade do |t|
