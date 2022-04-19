@@ -6,18 +6,6 @@ class ApplicationController < Sinatra::Base
     Listing.all.to_json(include: { reviews: { include: :user } })
   end
 
-  get "/listings/:id" do 
-    Listing.find(params[:id]).to_json
-  end
-
-  get "/users" do 
-    User.all.to_json
-  end
-
-  get "/reviews" do 
-    Review.all.to_json
-  end
-
   get "/listings/climate/:climate_type" do 
     Listing.where(climate_type: params[:climate_type]).to_json(include: { reviews: { include: :user } })
   end
@@ -25,5 +13,16 @@ class ApplicationController < Sinatra::Base
   get "/users" do 
     User.all.to_json
   end
+
+  get "/account/:id" do 
+    Owner.find(params[:id]).to_json(include: :listings)
+  end
+
+  patch "/listings/:id" do 
+    listing = Listing.find(params[:id])
+    listing.update(description: params[:description])
+    listing.to_json
+  end
+
 
 end
