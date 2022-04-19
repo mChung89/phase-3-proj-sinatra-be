@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/listings" do
-    Listing.all.to_json
+    Listing.all.to_json(include: :reviews)
   end
 
   get "/listings/:id" do 
@@ -12,6 +12,10 @@ class ApplicationController < Sinatra::Base
 
   get "/users" do 
     User.all.to_json
+  end
+
+  get "/reviews" do 
+    Review.all.to_json
   end
 
   get "/listings/climate/:climate_type" do 

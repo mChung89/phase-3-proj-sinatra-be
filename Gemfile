@@ -3,6 +3,7 @@ source "https://rubygems.org"
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
+
 # A DSL for quickly creating web applications
 # https://github.com/sinatra/sinatra
 gem "sinatra", "~> 2.1"
@@ -45,6 +46,8 @@ group :development do
   # https://github.com/alexch/rerun
   gem "rerun"
 end
+
+gem 'activerecord-reset-pk-sequence'
 
 # These gems will only be used when we are running tests
 group :test do
