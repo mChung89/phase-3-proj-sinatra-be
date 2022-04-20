@@ -9,17 +9,19 @@ puts "🌱 Seeding spices..."
 
 
 15.times do
-    User.create(name: Faker::Name.name)
+    User.create(name: Faker::Name.name, user_type: "user")
 end
 
-Owner.create(name: "Michael Chung", passhash: "f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b")
-Owner.create(name: "Adam Crespo", passhash: "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5")
+u1 = User.create(name: "Chett", passhash: "c78099d5c0a9644347ef97da40beed4db64d63a35d6ab34c9c3cd3bcee19578c", user_type: "user")
+
+Owner.create(name: "Michael Chung", passhash: "f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b", user_type: "owner")
+Owner.create(name: "Adam Crespo", passhash: "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5", user_type: "owner")
 
 
 Listing.create(location: "San Juan, Puerto Rico", description: " The condo is equipped with 2 bedrooms, 2 baths, a full kitchen, living room with a television, a dining room, and of course a balcony. Also, includes access to a gym and outdoor pool!", price_per_day: rand(250...450), climate_type: "tropical", title: "Relaxing place near the beach", thumbnail: "https://www.roadaffair.com/wp-content/uploads/2020/08/puerto-rico-airbnb.jpg", owner_id: 1)
 Listing.create(location: "St Thomas, US Virgin Islands", description: " You can easily walk to great restaurants, beaches, food stores and bars. The snorkeling and fishing at the property are excellent. ", price_per_day: rand(250...450), climate_type: "tropical", title: "Breath taking vacation spot on the islands", thumbnail: "https://i.pinimg.com/originals/e3/a3/72/e3a3725d2d3e667253879c8cd6a48969.jpg", owner_id: 2)
 Listing.create(location: "Montego Bay, Jamaica", description: "This stay is close to the beach, nightlife, downtown, public transport, restaurants and dining, and family-friendly activities.", price_per_day: rand(250...450), climate_type: "tropical", title: "Beach side tropical resort in Montego Bay", thumbnail: "https://res.cloudinary.com/twenty20/private_images/t_standard-fit/photosp/d9eeea34-bdb4-4f79-a7ab-5a9290c1720a/stock-photo-jamaica-jamaica-resort-iberostar-grand-hotel-jamaica-hotel-d9eeea34-bdb4-4f79-a7ab-5a9290c1720a.jpg", owner_id: 1)
-Listing.create(location: "The Bahamas", description: "This waterfront cottage has everything that a vacation home on the water demands.", price_per_day: rand(250...450), climate_type: "tropical", title: "Amazing waterfront property in the bahamas", thumbnail: "https://i0.wp.com/files.tripstodiscover.com/files/2020/06/Rock-Hill-House-Long-Island-Bahamas.jpg?resize=784%2C588", owner_id:2)
+Listing.create(location: "Bahamas", description: "This waterfront cottage has everything that a vacation home on the water demands.", price_per_day: rand(250...450), climate_type: "tropical", title: "Amazing waterfront property in the bahamas", thumbnail: "https://i0.wp.com/files.tripstodiscover.com/files/2020/06/Rock-Hill-House-Long-Island-Bahamas.jpg?resize=784%2C588", owner_id:2)
 
 
 Listing.create(location: "Los Angeles, CA", description: "It's cozy and quiet. Plenty of space in the closet for your things. 42 inch smart tv, basic DirecTV, neat and clean. Five miles to the beach and amenities in El Segundo.", price_per_day: rand(250...450), climate_type: "city", title: "Close to the airport, convenient LA location", thumbnail: "https://t3.ftcdn.net/jpg/03/48/06/74/360_F_348067415_PmFzkSJzPMXwni4RhmnB2Zji3TmA0pUF.jpg", owner_id: 1)
@@ -51,6 +53,11 @@ Review.create(listing_id: 8, user_id: 3, rating: 7, comment: "Solid, it was a pl
 Review.create(listing_id: 9, user_id: 4, rating: 8, comment: "loved the location, very close to all the local amenities")
 Review.create(listing_id: 10, user_id: 5, rating: 9, comment: "Only place I plan on staying at when im in town")
 Review.create(listing_id: 12, user_id: 6, rating: 6, comment: "it was ok")
+5.times do
+    Review.create(listing_id: Listing.pluck(:id).sample, user: u1, rating: rand(1..10), comment: Faker::Quote.yoda)
+end
+
+
 
 
 puts "✅ Done seeding!"

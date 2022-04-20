@@ -18,8 +18,21 @@ class ApplicationController < Sinatra::Base
     Owner.find(params[:id]).to_json(include: :listings)
   end
 
-  post "/accounts/authentication" do
+  get "/users/:id" do 
+    User.find(params[:id]).to_json(include: :listings)
+  end
+
+  post "/accounts/authenticateowner" do
     match = Owner.auth_user? params[:user], params[:password]
+    if match
+      match.to_json(include: :listings)
+    else
+      halt 500
+    end
+  end
+
+  post "/accounts/authenticateuser" do
+    match = User.auth_user? params[:user], params[:password]
     if match
       match.to_json(include: :listings)
     else
@@ -53,6 +66,5 @@ class ApplicationController < Sinatra::Base
 
     listing.to_json
   end
-
 
 end
