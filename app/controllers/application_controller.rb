@@ -33,5 +33,26 @@ class ApplicationController < Sinatra::Base
     listing.to_json
   end
 
+  post "/listings" do 
+    listing = Listing.create(
+      title: params[:title],
+      location: params[:location],
+      description: params[:description],
+      price_per_day: params[:price_per_day],
+      climate_type: params[:climate_type],
+      thumbnail: params[:thumbnail],
+      owner_id: params[:owner_id]
+    )
+    listing.to_json
+  end
+
+  delete "/listings/:id" do 
+  
+    listing = Listing.find(params[:id])
+    listing.destroy
+
+    listing.to_json
+  end
+
 
 end
