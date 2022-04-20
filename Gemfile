@@ -35,8 +35,12 @@ gem "rake", "~> 13.0"
 # Provides functionality to interact with a SQLite3 database
 gem "sqlite3", "~> 1.4"
 
+# SHA-256
+gem 'digest', '~> 3.1'
+
 # Require all files in a folder
 gem "require_all", "~> 3.0"
+
 
 # These gems will only be used when we are running the application locally
 group :development do

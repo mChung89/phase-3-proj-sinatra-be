@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_19_165756) do
+ActiveRecord::Schema.define(version: 2022_04_20_032709) do
 
   create_table "listings", force: :cascade do |t|
     t.string "location"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_04_19_165756) do
 
   create_table "owners", force: :cascade do |t|
     t.string "name"
+    t.string "passhash"
   end
 
   create_table "reviews", force: :cascade do |t|

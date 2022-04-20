@@ -12,8 +12,8 @@ puts "🌱 Seeding spices..."
     User.create(name: Faker::Name.name)
 end
 
-Owner.create(name: "Michael Chung")
-Owner.create(name: "Adam Crespo")
+Owner.create(name: "Michael Chung", passhash: "f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b")
+Owner.create(name: "Adam Crespo", passhash: "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5")
 
 
 Listing.create(location: "San Juan, Puerto Rico", description: " The condo is equipped with 2 bedrooms, 2 baths, a full kitchen, living room with a television, a dining room, and of course a balcony. Also, includes access to a gym and outdoor pool!", price_per_day: rand(250...450), climate_type: "tropical", title: "Relaxing place near the beach", thumbnail: "https://www.roadaffair.com/wp-content/uploads/2020/08/puerto-rico-airbnb.jpg", owner_id: 1)

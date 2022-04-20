@@ -31,6 +31,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.5.0)
+    digest (3.1.0)
     eventmachine (1.2.7)
     ffi (1.15.5)
     i18n (1.10.0)
@@ -95,6 +96,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
   x86_64-linux
 
@@ -102,6 +104,7 @@ DEPENDENCIES
   activerecord (~> 6.1)
   activerecord-reset-pk-sequence
   database_cleaner (~> 2.0)
+  digest (~> 3.1)
   faker!
   pry (~> 0.14.1)
   rack-contrib (~> 2.3)
