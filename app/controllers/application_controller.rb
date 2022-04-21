@@ -34,10 +34,18 @@ class ApplicationController < Sinatra::Base
   post "/accounts/authenticateuser" do
     match = User.auth_user? params[:user], params[:password]
     if match
-      match.to_json(include: :listings)
+      match.to_json(include: { reviews: { include: :listing}})
     else
       halt 500
     end
+  end
+
+  patch "/review/:id" do
+    review = Review.find(params[:id])
+    review.update(comment: params[:comment])
+    review.update(rating: params[:rating])
+    listing = review.listing
+    listing.to_json(include: { reviews: { include: :user } })
   end
 
   patch "/listings/:id" do 
